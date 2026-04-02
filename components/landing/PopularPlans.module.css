@@ -366,10 +366,13 @@
   background: white;
   width: 100%;
   max-width: 500px;
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
   border-radius: 20px;
   padding: 32px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .closeButton {
