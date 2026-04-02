@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "EOLMA JULKKA — USIM & Budget Phones for Foreigners in Korea",
+    "description": "Fixed-price USIM and budget phone plans for foreigners living in Korea. No hidden fees, transparent pricing."
+  },
+  "nav": {
+    "plans": "Plans",
+    "apply": "Apply",
+    "support": "Support",
+    "reviews": "Reviews",
+    "about": "About",
+    "findPlan": "Find My Plan",
+    "chat": "Live Chat"
+  },
+  "hero": {
+    "title": "Getting a phone in Korea",
+    "titleHighlight": "shouldn't be this hard.",
+    "subtitle": "Fixed prices. No hidden fees. Start with confidence.",
+    "ctaPrimary": "Find My Plan",
+    "ctaSecondary": "Compare Plans"
+  },
+  "socialProof": {
+    "todaySignups": "{count} signed up today",
+    "totalSubscribers": "{count}+ subscribers",
+    "countries": "30+ countries"
+  },
+  "guarantee": {
+    "title": "Hard to choose a USIM or plan?",
+    "highlight": "Get a Free Consultation",
+    "subtitle": "From plans to device selection\nSolve it easily with 1:1 custom consultation",
+    "feature1_title": "1:1 Expert Chat",
+    "feature1_desc": "Tailored guidance from experts",
+    "feature2_title": "Device Match",
+    "feature2_desc": "Phones matching your budget",
+    "feature3_title": "Plan Match",
+    "feature3_desc": "Optimal plans for your needs",
+    "feature4_title": "Review Event",
+    "feature4_desc": "100% gift for writing a review!",
+    "footnote": "Official partners handle free consultation and activation.",
+    "button": "Get Free Consultation"
+  },
+  "plans": {
+    "sectionTitle": "Popular Plans",
+    "sectionSubtitle": "Choose the perfect plan for your stay in Korea",
+    "monthly": "mo",
+    "data": "Data",
+    "voice": "Calls",
+    "sms": "SMS",
+    "popular": "Most Popular",
+    "recommended": "Recommended",
+    "applyNow": "Apply Now",
+    "viewDetails": "View Details",
+    "perMonth": "/mo",
+    "unlimited": "Unlimited",
+    "light": {
+      "name": "Light",
+      "positioning": "Budget-friendly starter"
+    },
+    "standard": {
+      "name": "Standard",
+      "positioning": "Best value"
+    },
+    "premium": {
+      "name": "Premium",
+      "positioning": "For heavy users"
+    },
+    "savingsNote": "Save up to ₩30,000/mo compared to major carriers"
+  },
+  "trust": {
+    "sectionTitle": "Start with confidence",
+    "registered": "Registered business",
+    "refundGuarantee": "7-day full refund",
+    "multilingual": "Multilingual support",
+    "secure": "Data protection",
+    "directBilling": "Carrier direct billing"
+  },
+  "reviews": {
+    "sectionTitle": "Real User Reviews",
+    "averageRating": "Average rating",
+    "totalReviews": "{count} reviews",
+    "recommend": " recommend us",
+    "writeReview": "Write a Review",
+    "viewAll": "View All Reviews"
+  },
+  "apply": {
+    "title": "Apply for USIM",
+    "step1": "Plan Confirm",
+    "step2": "Personal Info",
+    "step3": "ID Verification",
+    "step4": "Delivery",
+    "step5": "Complete",
+    "arcRequired": "Budget phone USIM requires a valid Alien Registration Card (ARC).",
+    "deliveryCourier": "Courier Delivery",
+    "deliveryEsim": "eSIM (Instant)",
+    "noBilling": "No payment required — your carrier will bill you directly.",
+    "submit": "Submit Application",
+    "complete": "Application submitted!",
+    "completeDesc": "Your SIM will be activated within 2 business hours."
+  },
+  "footer": {
+    "company": "EOLMA JULKKA",
+    "companyDesc": "Fixed-price telecom service for foreigners in Korea",
+    "links": "Quick Links",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2026 EOLMA JULKKA. All rights reserved."
+  }
+}

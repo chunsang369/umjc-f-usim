@@ -1,0 +1,1136 @@
+/* ===== Apply Page ===== */
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f0f4ff 0%, #f8f9fa 40%);
+  padding: 100px 16px 80px;
+}
+
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 900;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+  font-size: 15px;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 48px;
+  font-weight: 500;
+}
+
+/* ===== Step Indicator ===== */
+.stepIndicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  position: relative;
+  padding: 0 8px;
+}
+
+.stepLine {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  top: 20px;
+  height: 3px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.stepLineProgress {
+  height: 100%;
+  background: linear-gradient(90deg, #1F66FB, #60A5FA);
+  border-radius: 4px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  min-width: 60px;
+}
+
+.stepCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.stepCircleDefault {
+  background: #ffffff;
+  border: 2px solid #d1d5db;
+  color: #9ca3af;
+}
+
+.stepCircleActive {
+  background: #1F66FB;
+  border: 2px solid #1F66FB;
+  color: #ffffff;
+  box-shadow: 0 0 0 6px rgba(31, 102, 251, 0.15), 0 4px 12px rgba(31, 102, 251, 0.25);
+}
+
+.stepCircleCompleted {
+  background: #059669;
+  border: 2px solid #059669;
+  color: #ffffff;
+}
+
+.stepLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  max-width: 80px;
+  word-break: keep-all;
+  transition: color 0.3s ease;
+}
+
+.stepLabelDefault { color: #9ca3af; }
+.stepLabelActive { color: #1F66FB; }
+.stepLabelCompleted { color: #059669; }
+
+/* ===== Form Container ===== */
+.formCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.formCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1F66FB, #60A5FA, #0EA5E9);
+}
+
+/* Step Header */
+.stepTag {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1F66FB;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.stepTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.stepDesc {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* ===== Step 1: Verify Cards ===== */
+.verifyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.verifyCard {
+  position: relative;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 32px 24px 28px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.verifyCard:hover {
+  border-color: #bfdbfe;
+  background: #fafbff;
+}
+
+.verifyCardSelected {
+  border-color: #1F66FB;
+  background: #f0f5ff;
+  box-shadow: 0 0 0 3px rgba(31, 102, 251, 0.1);
+}
+
+.verifyIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.verifyIconArc {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #1d4ed8;
+}
+
+.verifyIconPassport {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #b45309;
+}
+
+.verifyCardTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.verifyCardDesc {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.verifyCardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.verifyCardList li {
+  font-size: 12.5px;
+  color: #374151;
+  padding: 6px 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.verifyCardList li::before {
+  content: '✓ ';
+  color: #059669;
+  font-weight: 700;
+}
+
+.selectedBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: #1F66FB;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+/* Warning Box */
+.warningBox {
+  display: flex;
+  gap: 14px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-top: 4px;
+}
+
+.warningIcon {
+  color: #d97706;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.warningBox strong {
+  font-size: 14px;
+  color: #92400e;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.warningList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.warningList li {
+  font-size: 13px;
+  color: #78350f;
+  line-height: 1.5;
+}
+
+.warningList li::before {
+  content: '• ';
+  color: #d97706;
+}
+
+.warningLink {
+  color: #1d4ed8;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Info Box */
+.infoBox {
+  display: flex;
+  gap: 14px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 28px;
+}
+
+.infoIcon {
+  color: #1d4ed8;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.infoBox strong {
+  font-size: 14px;
+  color: #1e40af;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.infoText {
+  font-size: 13px;
+  color: #1e40af;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.infoList {
+  padding-left: 18px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoList li {
+  font-size: 13px;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+/* ===== Form Fields ===== */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #ef4444;
+}
+
+.fieldInput {
+  width: 100%;
+  padding: 14px 18px;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 14px;
+  font-size: 15px;
+  color: #111827;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.fieldInput::placeholder {
+  color: #9ca3af;
+}
+
+.fieldInput:focus {
+  border-color: #1F66FB;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(31, 102, 251, 0.08);
+}
+
+.fieldInputMono {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Select */
+.selectWrapper {
+  position: relative;
+}
+
+.fieldSelect {
+  width: 100%;
+  padding: 14px 44px 14px 18px;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 14px;
+  font-size: 15px;
+  color: #111827;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.fieldSelect:focus {
+  border-color: #1F66FB;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(31, 102, 251, 0.08);
+}
+
+.selectArrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* Field Row (side by side) */
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fieldHalf {
+  flex: 1;
+}
+
+/* Upload Section */
+.uploadSection {
+  margin-top: 4px;
+}
+
+.uploadBox {
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #6b7280;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.uploadBox:hover {
+  border-color: #1F66FB;
+  background: #f8faff;
+  color: #1F66FB;
+}
+
+.uploadHint {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.uploadLink {
+  color: #1d4ed8;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* ===== Plan Cards (Step 3) ===== */
+.planGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.planCard {
+  position: relative;
+  border: 2px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px 28px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #ffffff;
+}
+
+.planCard:hover {
+  border-color: #bfdbfe;
+  background: #fafbff;
+}
+
+.planCardSelected {
+  border-color: #1F66FB;
+  background: #f0f5ff;
+  box-shadow: 0 0 0 3px rgba(31, 102, 251, 0.1);
+}
+
+.planBadge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 8px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.planHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.planName {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.planPriceWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.planPrice {
+  font-size: 24px;
+  font-weight: 900;
+  color: #1F66FB;
+}
+
+.planPriceUnit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.planDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.planDetailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.planDetailLabel {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.planDetailValue {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.planCheck {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1F66FB;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Step 1: Selected Plan Display ===== */
+.selectedPlanCard {
+  position: relative;
+  background: linear-gradient(135deg, #f0f5ff 0%, #ffffff 100%);
+  border: 2px solid #1F66FB;
+  border-radius: 20px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 0 0 3px rgba(31, 102, 251, 0.08);
+}
+
+.selectedPlanBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: #1F66FB;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.selectedPlanName {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.selectedPlanSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.selectedPlanSpecItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6b7280;
+}
+
+.selectedPlanSpecItem svg {
+  flex-shrink: 0;
+  color: #1F66FB;
+}
+
+.selectedPlanSpecLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  min-width: 44px;
+}
+
+.selectedPlanSpecValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.selectedPlanPriceArea {
+  margin-bottom: 20px;
+}
+
+.selectedPlanPriceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.selectedPlanPriceLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.selectedPlanBasePrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.selectedPlanFinalPrice {
+  font-size: 26px;
+  font-weight: 900;
+  color: #1F66FB;
+}
+
+.selectedPlanPriceNote {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 4px;
+  text-align: right;
+}
+
+.changePlanBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 13px 20px;
+  background: transparent;
+  border: 1.5px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.changePlanBtn:hover {
+  border-color: #1F66FB;
+  color: #1F66FB;
+  background: #f0f5ff;
+}
+
+/* No plan selected state */
+.noPlanContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.noPlanIcon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #9ca3af;
+}
+
+.noPlanTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.noPlanDesc {
+  font-size: 14px;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 340px;
+}
+
+.goToPlanBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #1F66FB, #1D4ED8);
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(31, 102, 251, 0.25);
+}
+
+.goToPlanBtn:hover {
+  background: linear-gradient(135deg, #3B82F6, #1F66FB);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(31, 102, 251, 0.35);
+}
+
+/* ===== Delivery Cards (Step 4) ===== */
+.deliveryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.deliveryCard {
+  border: 2px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 32px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  background: #ffffff;
+}
+
+.deliveryCard:hover {
+  border-color: #bfdbfe;
+  background: #fafbff;
+}
+
+.deliveryCardSelected {
+  border-color: #1F66FB;
+  background: #f0f5ff;
+  box-shadow: 0 0 0 3px rgba(31, 102, 251, 0.1);
+}
+
+.deliveryIcon {
+  color: #9ca3af;
+  transition: color 0.25s ease;
+}
+
+.deliveryIconSelected {
+  color: #1F66FB;
+}
+
+.deliveryTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.deliveryDesc {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.deliveryForm {
+  margin-top: 8px;
+}
+
+/* ===== Summary Card (Step 4) ===== */
+.summaryCard {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 28px;
+  margin-top: 28px;
+}
+
+.summaryTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.summaryRow:last-of-type {
+  border-bottom: none;
+}
+
+.summaryLabel {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.summaryValue {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 600;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 16px;
+  margin-top: 4px;
+  border-top: 2px solid #e5e7eb;
+}
+
+.summaryTotalLabel {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.summaryTotalValue {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1F66FB;
+}
+
+.paymentNotice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 16px;
+}
+
+.paymentNoticeIcon {
+  color: #1F66FB;
+  flex-shrink: 0;
+}
+
+.paymentNoticeText {
+  font-size: 13px;
+  color: #1e40af;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.paymentNoticeText strong {
+  font-weight: 700;
+}
+
+/* ===== Success (Step 5) ===== */
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.successIcon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  color: #059669;
+}
+
+.successTitle {
+  font-size: 28px;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.successDesc {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 420px;
+}
+
+.successInfo {
+  width: 100%;
+  max-width: 380px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.successInfoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.successInfoRow:first-child {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.successInfoRow span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.successInfoRow strong {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 700;
+}
+
+.successLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.successLink:hover {
+  background: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Navigation Buttons ===== */
+.navButtons {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.btnPrev {
+  flex: 0 0 auto;
+  width: 30%;
+  padding: 16px 20px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btnPrev:hover {
+  background: #e5e7eb;
+}
+
+.btnNext {
+  flex: 1;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #1F66FB, #1D4ED8);
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(31, 102, 251, 0.25);
+}
+
+.btnNext:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3B82F6, #1F66FB);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(31, 102, 251, 0.35);
+}
+
+.btnNext:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btnNextFull {
+  width: 100%;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .page {
+    padding: 90px 12px 60px;
+  }
+
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .formCard {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .stepTitle {
+    font-size: 20px;
+  }
+
+  .verifyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .deliveryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+
+  .stepLabel {
+    font-size: 10px;
+    max-width: 56px;
+  }
+
+  .stepCircle {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .planHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

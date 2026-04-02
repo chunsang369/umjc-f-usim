@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "얼마줄까 — 外国人专用USIM·实惠手机",
+    "description": "为在韩外国人提供安心定价USIM/实惠手机。无隐藏费用，透明定价。"
+  },
+  "nav": {
+    "plans": "套餐",
+    "apply": "申请",
+    "support": "客服",
+    "reviews": "评价",
+    "about": "关于我们",
+    "findPlan": "找到我的套餐",
+    "chat": "在线客服"
+  },
+  "hero": {
+    "title": "在韩国办手机，",
+    "titleHighlight": "不用被坑。",
+    "subtitle": "透明价格，一键开通。无隐藏费用，安心使用。",
+    "ctaPrimary": "找到我的套餐",
+    "ctaSecondary": "对比套餐"
+  },
+  "socialProof": {
+    "todaySignups": "今天{count}人注册",
+    "totalSubscribers": "累计{count}+用户",
+    "countries": "30+国家"
+  },
+  "guarantee": {
+    "title": "不知道如何选择USIM或套餐？",
+    "highlight": "免费咨询",
+    "subtitle": "从套餐到选机\n1对1定制咨询轻松解决",
+    "feature1_title": "1对1专业咨询",
+    "feature1_desc": "通信专家量身定制",
+    "feature2_title": "机型推荐",
+    "feature2_desc": "预算与需求完美匹配",
+    "feature3_title": "套餐推荐",
+    "feature3_desc": "分析使用习惯推荐最佳套餐",
+    "feature4_title": "评价活动",
+    "feature4_desc": "撰写购买评价100%送礼包！",
+    "footnote": "官方合作伙伴直接提供免费咨询与开通服务。",
+    "button": "获取免费咨询"
+  },
+  "plans": {
+    "sectionTitle": "热门套餐",
+    "sectionSubtitle": "为外国人量身定制的通信套餐",
+    "monthly": "月",
+    "data": "流量",
+    "voice": "通话",
+    "sms": "短信",
+    "popular": "最受欢迎",
+    "recommended": "推荐",
+    "applyNow": "立即申请",
+    "viewDetails": "查看详情",
+    "perMonth": "/月",
+    "unlimited": "无限",
+    "light": {
+      "name": "Light",
+      "positioning": "经济入门型"
+    },
+    "standard": {
+      "name": "Standard",
+      "positioning": "性价比之选"
+    },
+    "premium": {
+      "name": "Premium",
+      "positioning": "重度使用型"
+    },
+    "savingsNote": "比大型运营商每月最多节省₩30,000"
+  },
+  "trust": {
+    "sectionTitle": "安心开始",
+    "registered": "通信销售业登记",
+    "refundGuarantee": "7天无条件退款",
+    "multilingual": "多语言客服",
+    "secure": "个人信息保护",
+    "directBilling": "运营商直接计费"
+  },
+  "reviews": {
+    "sectionTitle": "真实用户评价",
+    "averageRating": "平均评分",
+    "totalReviews": "共{count}条评价",
+    "recommend": "推荐我们",
+    "writeReview": "写评价",
+    "viewAll": "查看全部评价"
+  },
+  "apply": {
+    "step1": "确认套餐",
+    "step2": "基本信息",
+    "step3": "身份验证",
+    "step4": "领取方式",
+    "step5": "申请完成",
+    "arcRequired": "实惠手机USIM需要持有外国人登录证(ARC)。",
+    "deliveryCourier": "快递配送",
+    "deliveryEsim": "eSIM（即时发放）",
+    "noBilling": "无需支付——运营商将直接向您收费。",
+    "submit": "提交申请",
+    "complete": "申请已提交！",
+    "completeDesc": "您的SIM卡将在2个工作小时内激活。"
+  },
+  "footer": {
+    "company": "얼마줄까",
+    "companyDesc": "为在韩外国人提供安心定价通信服务",
+    "links": "快捷链接",
+    "legal": "法律声明",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "copyright": "© 2026 얼마줄까. All rights reserved."
+  }
+}

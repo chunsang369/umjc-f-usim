@@ -1,0 +1,104 @@
+.strip {
+  background: #f0f1f3;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 36px 0 28px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 숫자 스탯 */
+.items {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.item strong {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.primary { color: #6366f1; }
+.secondary { color: #06b6d4; }
+.accent { color: #f59e0b; }
+
+/* 국기 마퀴 롤링 */
+.marqueeWrap {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.flag {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  cursor: default;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ffffff;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .items {
+    gap: 24px;
+  }
+
+  .item {
+    font-size: 13px;
+  }
+
+  .item strong {
+    font-size: 14px;
+  }
+
+  .flag {
+    font-size: 24px;
+  }
+
+  .marqueeTrack {
+    gap: 12px;
+    animation-duration: 30s;
+  }
+}

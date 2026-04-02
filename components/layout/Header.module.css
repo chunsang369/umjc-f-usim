@@ -1,0 +1,221 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+.logoIcon {
+  font-size: 1.5rem;
+}
+.logoText {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Desktop Nav */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+.navLink {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-base);
+  border-radius: 1px;
+}
+.navLink:hover {
+  color: var(--color-text);
+}
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Language Switcher */
+.langSwitcher {
+  position: relative;
+}
+.langButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.langButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+.rotated {
+  transform: rotate(180deg);
+  transition: transform var(--transition-fast);
+}
+.langDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+}
+.langOption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.langOption:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+.langActive {
+  color: var(--color-primary-light);
+  background: rgba(108, 92, 231, 0.1);
+}
+
+/* Chat Button */
+.chatButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--color-secondary), #00B894);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.chatButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+}
+.chatLabel {
+  display: none;
+}
+
+/* Mobile Toggle */
+.mobileToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+.mobileNavLink {
+  display: block;
+  padding: var(--space-md) 0;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition-fast);
+}
+.mobileNavLink:hover {
+  color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+  .mobileToggle {
+    display: block;
+  }
+  .mobileMenu {
+    display: flex;
+  }
+  .chatLabel {
+    display: none;
+  }
+  .langButton span {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chatLabel {
+    display: inline;
+  }
+}

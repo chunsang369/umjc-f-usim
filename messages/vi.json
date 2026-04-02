@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "얼마줄까 — USIM & Điện thoại tiết kiệm cho người nước ngoài",
+    "description": "USIM và gói điện thoại tiết kiệm dành cho người nước ngoài tại Hàn Quốc. Giá minh bạch, không phí ẩn."
+  },
+  "nav": {
+    "plans": "Gói cước",
+    "apply": "Đăng ký",
+    "support": "Hỗ trợ",
+    "reviews": "Đánh giá",
+    "about": "Giới thiệu",
+    "findPlan": "Tìm gói phù hợp",
+    "chat": "Chat trực tuyến"
+  },
+  "hero": {
+    "title": "Đăng ký điện thoại ở Hàn Quốc,",
+    "titleHighlight": "không lo về giá.",
+    "subtitle": "Giá minh bạch, không phát sinh. Đăng ký dễ dàng ngay hôm nay.",
+    "ctaPrimary": "Tìm gói phù hợp",
+    "ctaSecondary": "So sánh gói cước"
+  },
+  "socialProof": {
+    "todaySignups": "Hôm nay {count} người đăng ký",
+    "totalSubscribers": "{count}+ thuê bao",
+    "countries": "30+ quốc gia"
+  },
+  "guarantee": {
+    "title": "Khó khăn khi chọn USIM hay gói cước?",
+    "highlight": "Tư vấn miễn phí",
+    "subtitle": "Từ chọn gói cước đến thiết bị\nGiải quyết dễ dàng qua tư vấn 1:1",
+    "feature1_title": "Tư vấn 1:1",
+    "feature1_desc": "Chuyên gia tư vấn tùy chỉnh",
+    "feature2_title": "Gợi ý thiết bị",
+    "feature2_desc": "Phù hợp ngân sách & nhu cầu",
+    "feature3_title": "Gợi ý gói cước",
+    "feature3_desc": "Tối ưu dựa trên dữ liệu",
+    "feature4_title": "Sự kiện đánh giá",
+    "feature4_desc": "Tặng 100% quà khi viết đánh giá!",
+    "footnote": "Đối tác chính thức sẽ trực tiếp tư vấn và hỗ trợ kích hoạt.",
+    "button": "Nhận tư vấn miễn phí"
+  },
+  "plans": {
+    "sectionTitle": "Gói cước phổ biến",
+    "sectionSubtitle": "Gói cước phù hợp cho người nước ngoài tại Hàn Quốc",
+    "monthly": "tháng",
+    "data": "Data",
+    "voice": "Gọi",
+    "sms": "SMS",
+    "popular": "Phổ biến nhất",
+    "recommended": "Đề xuất",
+    "applyNow": "Đăng ký ngay",
+    "viewDetails": "Xem chi tiết",
+    "perMonth": "/tháng",
+    "unlimited": "Không giới hạn",
+    "light": {
+      "name": "Light",
+      "positioning": "Tiết kiệm cho người mới"
+    },
+    "standard": {
+      "name": "Standard",
+      "positioning": "Giá trị tốt nhất"
+    },
+    "premium": {
+      "name": "Premium",
+      "positioning": "Cho người dùng nhiều"
+    },
+    "savingsNote": "Tiết kiệm tới ₩30,000/tháng so với nhà mạng lớn"
+  },
+  "trust": {
+    "sectionTitle": "An tâm bắt đầu",
+    "registered": "Đăng ký kinh doanh",
+    "refundGuarantee": "Hoàn tiền 7 ngày",
+    "multilingual": "Hỗ trợ đa ngôn ngữ",
+    "secure": "Bảo mật thông tin",
+    "directBilling": "Nhà mạng tính cước trực tiếp"
+  },
+  "reviews": {
+    "sectionTitle": "Đánh giá từ người dùng thực tế",
+    "averageRating": "Điểm trung bình",
+    "totalReviews": "{count} đánh giá",
+    "recommend": " đề xuất chúng tôi",
+    "writeReview": "Viết đánh giá",
+    "viewAll": "Xem tất cả đánh giá"
+  },
+  "apply": {
+    "step1": "Xác nhận gói",
+    "step2": "Thông tin cá nhân",
+    "step3": "Xác minh danh tính",
+    "step4": "Phương thức nhận",
+    "step5": "Hoàn tất",
+    "arcRequired": "USIM điện thoại tiết kiệm yêu cầu Thẻ đăng ký người nước ngoài (ARC).",
+    "deliveryCourier": "Giao hàng tận nơi",
+    "deliveryEsim": "eSIM (Cấp ngay)",
+    "noBilling": "Không cần thanh toán — Nhà mạng sẽ tính cước trực tiếp cho bạn.",
+    "submit": "Gửi đăng ký",
+    "complete": "Đăng ký đã được gửi!",
+    "completeDesc": "SIM của bạn sẽ được kích hoạt trong 2 giờ làm việc."
+  },
+  "footer": {
+    "company": "얼마줄까",
+    "companyDesc": "Dịch vụ viễn thông giá cố định cho người nước ngoài tại Hàn Quốc",
+    "links": "Liên kết nhanh",
+    "legal": "Pháp lý",
+    "privacy": "Chính sách bảo mật",
+    "terms": "Điều khoản dịch vụ",
+    "copyright": "© 2026 얼마줄까. All rights reserved."
+  }
+}
