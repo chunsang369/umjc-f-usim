@@ -19,6 +19,10 @@ export type ApplicationData = {
   eid?: string;
   deliveryAddress?: string;
   deliveryPhone?: string;
+  arcFrontFile?: string;
+  mugshotFile?: string;
+  passportFile?: string;
+  entryProofFile?: string;
 };
 
 export async function submitApplication(data: ApplicationData) {
@@ -40,6 +44,10 @@ export async function submitApplication(data: ApplicationData) {
         eid: data.eid || null,
         deliveryAddress: data.deliveryAddress || null,
         deliveryPhone: data.deliveryPhone || null,
+        arcFrontFile: data.arcFrontFile || null,
+        mugshotFile: data.mugshotFile || null,
+        passportFile: data.passportFile || null,
+        entryProofFile: data.entryProofFile || null,
         status: 'pending',
       },
     });

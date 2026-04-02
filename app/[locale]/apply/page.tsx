@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
+import DaumPostcodeEmbed from 'react-daum-postcode';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import {
   Check,
@@ -50,6 +51,15 @@ const allPlans: PlanInfo[] = [
   { id: 'p-9', promoName: '[외국인 단독특가] 5GX 레귤러플러스', dataSpec: '월 250GB + 5Mbps', voiceDetail: '무제한', msgDetail: '기본제공', networkDetail: '5G', monthlyPrice: '42,500', basePrice: '79,000', returnPriceMsg: '12개월 간 특가 적용' },
 ];
 
+const fileToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = error => reject(error);
+  });
+};
+
 function ApplyPageContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -72,6 +82,10 @@ function ApplyPageContent() {
   const [passportNumber, setPassportNumber] = useState('');
   const [visaType, setVisaType] = useState('');
   const [contactNumber, setContactNumber] = useState('');
+  const [arcFrontFile, setArcFrontFile] = useState<File | null>(null);
+  const [mugshotFile, setMugshotFile] = useState<File | null>(null);
+  const [passportFile, setPassportFile] = useState<File | null>(null);
+  const [entryProofFile, setEntryProofFile] = useState<File | null>(null);
 
   // Step 4: 수령 방법
   const [deliveryMethod, setDeliveryMethod] = useState<DeliveryType>(null);
@@ -80,7 +94,9 @@ function ApplyPageContent() {
   const [imei2, setImei2] = useState('');
   const [eid, setEid] = useState('');
   const [deliveryAddress, setDeliveryAddress] = useState('');
+  const [deliveryAddressDetail, setDeliveryAddressDetail] = useState('');
   const [deliveryPhone, setDeliveryPhone] = useState('');
+  const [showPostcode, setShowPostcode] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const steps = ['요금제 확인', '개통 방식', '신분증 정보', '수령 방법', '접수 완료'];
@@ -131,8 +147,12 @@ function ApplyPageContent() {
         imei1: deliveryMethod === 'esim' ? imei1 : undefined,
         imei2: deliveryMethod === 'esim' ? imei2 : undefined,
         eid: deliveryMethod === 'esim' ? eid : undefined,
-        deliveryAddress: deliveryMethod === 'physical' ? deliveryAddress : undefined,
+        deliveryAddress: deliveryMethod === 'physical' ? `${deliveryAddress} ${deliveryAddressDetail}`.trim() : undefined,
         deliveryPhone: deliveryMethod === 'physical' ? deliveryPhone : undefined,
+        arcFrontFile: arcFrontFile ? await fileToBase64(arcFrontFile) : undefined,
+        mugshotFile: mugshotFile ? await fileToBase64(mugshotFile) : undefined,
+        passportFile: passportFile ? await fileToBase64(passportFile) : undefined,
+        entryProofFile: entryProofFile ? await fileToBase64(entryProofFile) : undefined,
       });
 
       if (result.success) {
@@ -159,13 +179,13 @@ function ApplyPageContent() {
       case 2:
         return verificationType !== null;
       case 3:
-        if (verificationType === 'arc') return arcName.trim() !== '' && arcNumber.trim() !== '';
+        if (verificationType === 'arc') return arcName.trim() !== '' && arcNumber.trim() !== '' && !!arcFrontFile && !!mugshotFile;
         if (verificationType === 'passport')
-          return passportName.trim() !== '' && passportNumber.trim() !== '' && visaType !== '' && contactNumber.trim() !== '';
+          return passportName.trim() !== '' && passportNumber.trim() !== '' && visaType !== '' && contactNumber.trim() !== '' && !!passportFile && !!entryProofFile;
         return false;
       case 4:
         if (deliveryMethod === 'esim') return phoneModel.trim() !== '' && imei1.trim() !== '' && eid.trim() !== '';
-        if (deliveryMethod === 'physical') return deliveryAddress.trim() !== '' && deliveryPhone.trim() !== '';
+        if (deliveryMethod === 'physical') return deliveryAddress.trim() !== '' && deliveryAddressDetail.trim() !== '' && deliveryPhone.trim() !== '';
         return false;
       default:
         return true;
@@ -456,21 +476,27 @@ function ApplyPageContent() {
 
                     {/* 서류 업로드 */}
                     <div className={styles.uploadSection}>
-                      <label className={styles.fieldLabel}>외국인등록증 앞면 사본</label>
-                      <div className={styles.uploadBox}>
-                        <Upload size={24} />
-                        <span>사진본/복사본/스캔본 업로드</span>
-                        <span className={styles.uploadHint}>JPG, PNG, PDF (최대 10MB)</span>
-                      </div>
+                      <label className={styles.fieldLabel}>외국인등록증 앞면 사본 <span className={styles.required}>*</span></label>
+                      <label className={styles.uploadBox} style={{ cursor: 'pointer', borderColor: arcFrontFile ? '#0070f3' : undefined, backgroundColor: arcFrontFile ? '#f0f7ff' : undefined }}>
+                        <Upload size={24} color={arcFrontFile ? '#0070f3' : 'currentColor'} />
+                        <span style={{ color: arcFrontFile ? '#0070f3' : 'inherit', fontWeight: arcFrontFile ? '600' : 'normal' }}>
+                          {arcFrontFile ? arcFrontFile.name : '사진본/복사본/스캔본 업로드'}
+                        </span>
+                        <span className={styles.uploadHint}>JPG, PNG, PDF (최대 15MB)</span>
+                        <input type="file" style={{ display: 'none' }} accept="image/*,.pdf" onChange={(e) => setArcFrontFile(e.target.files?.[0] || null)} />
+                      </label>
                     </div>
 
                     <div className={styles.uploadSection}>
-                      <label className={styles.fieldLabel}>머그샷 사진 (얼굴 + 등록증 동시 촬영)</label>
-                      <div className={styles.uploadBox}>
-                        <Camera size={24} />
-                        <span>본인확인용 사진 업로드</span>
+                      <label className={styles.fieldLabel}>머그샷 사진 (얼굴 + 등록증 동시 촬영) <span className={styles.required}>*</span></label>
+                      <label className={styles.uploadBox} style={{ cursor: 'pointer', borderColor: mugshotFile ? '#0070f3' : undefined, backgroundColor: mugshotFile ? '#f0f7ff' : undefined }}>
+                        <Camera size={24} color={mugshotFile ? '#0070f3' : 'currentColor'} />
+                        <span style={{ color: mugshotFile ? '#0070f3' : 'inherit', fontWeight: mugshotFile ? '600' : 'normal' }}>
+                          {mugshotFile ? mugshotFile.name : '본인확인용 사진 업로드'}
+                        </span>
                         <span className={styles.uploadHint}>얼굴과 외국인등록증이 함께 보여야 합니다</span>
-                      </div>
+                        <input type="file" style={{ display: 'none' }} accept="image/*" onChange={(e) => setMugshotFile(e.target.files?.[0] || null)} />
+                      </label>
                     </div>
                   </>
                 ) : (
@@ -534,26 +560,32 @@ function ApplyPageContent() {
 
                     {/* 서류 업로드 */}
                     <div className={styles.uploadSection}>
-                      <label className={styles.fieldLabel}>여권 사본 (사진면)</label>
-                      <div className={styles.uploadBox}>
-                        <Upload size={24} />
-                        <span>사진본/복사본/스캔본 업로드</span>
-                        <span className={styles.uploadHint}>JPG, PNG, PDF (최대 10MB)</span>
-                      </div>
+                      <label className={styles.fieldLabel}>여권 사본 (사진면) <span className={styles.required}>*</span></label>
+                      <label className={styles.uploadBox} style={{ cursor: 'pointer', borderColor: passportFile ? '#0070f3' : undefined, backgroundColor: passportFile ? '#f0f7ff' : undefined }}>
+                        <Upload size={24} color={passportFile ? '#0070f3' : 'currentColor'} />
+                        <span style={{ color: passportFile ? '#0070f3' : 'inherit', fontWeight: passportFile ? '600' : 'normal' }}>
+                          {passportFile ? passportFile.name : '사진본/복사본/스캔본 업로드'}
+                        </span>
+                        <span className={styles.uploadHint}>JPG, PNG, PDF (최대 15MB)</span>
+                        <input type="file" style={{ display: 'none' }} accept="image/*,.pdf" onChange={(e) => setPassportFile(e.target.files?.[0] || null)} />
+                      </label>
                     </div>
 
                     <div className={styles.uploadSection}>
-                      <label className={styles.fieldLabel}>체류기간확인서</label>
-                      <div className={styles.uploadBox}>
-                        <FileText size={24} />
-                        <span>체류기간확인서 업로드</span>
+                      <label className={styles.fieldLabel}>체류기간확인서 <span className={styles.required}>*</span></label>
+                      <label className={styles.uploadBox} style={{ cursor: 'pointer', borderColor: entryProofFile ? '#0070f3' : undefined, backgroundColor: entryProofFile ? '#f0f7ff' : undefined }}>
+                        <FileText size={24} color={entryProofFile ? '#0070f3' : 'currentColor'} />
+                        <span style={{ color: entryProofFile ? '#0070f3' : 'inherit', fontWeight: entryProofFile ? '600' : 'normal' }}>
+                          {entryProofFile ? entryProofFile.name : '체류기간확인서 업로드'}
+                        </span>
                         <span className={styles.uploadHint}>
-                          <a href="https://www.hikorea.go.kr" target="_blank" rel="noopener noreferrer" className={styles.uploadLink}>
+                          <a href="https://www.hikorea.go.kr" target="_blank" rel="noopener noreferrer" className={styles.uploadLink} onClick={(e) => e.stopPropagation()}>
                             하이코리아(hikorea.go.kr)
                           </a>
                           에서 발급
                         </span>
-                      </div>
+                        <input type="file" style={{ display: 'none' }} accept="image/*,.pdf" onChange={(e) => setEntryProofFile(e.target.files?.[0] || null)} />
+                      </label>
                     </div>
                   </>
                 )}
@@ -678,12 +710,64 @@ function ApplyPageContent() {
                       <label className={styles.fieldLabel}>
                         배송 주소 <span className={styles.required}>*</span>
                       </label>
+                      <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                        <input
+                          type="text"
+                          value={deliveryAddress}
+                          readOnly
+                          className={styles.fieldInput}
+                          placeholder="주소 검색 버튼을 눌러주세요"
+                          style={{ flex: 1, backgroundColor: '#f8fafc', cursor: 'default' }}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowPostcode(!showPostcode)}
+                          style={{
+                            padding: '0 20px',
+                            backgroundColor: '#0070f3',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '10px',
+                            fontWeight: 600,
+                            fontSize: '14px',
+                            cursor: 'pointer',
+                            whiteSpace: 'nowrap',
+                            transition: 'background-color 0.2s',
+                          }}
+                          onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#005cc5')}
+                          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#0070f3')}
+                        >
+                          {showPostcode ? '닫기' : '주소 검색'}
+                        </button>
+                      </div>
+                      {showPostcode && (
+                        <div style={{
+                          border: '2px solid #0070f3',
+                          borderRadius: '12px',
+                          overflow: 'hidden',
+                          marginBottom: '12px',
+                        }}>
+                          <DaumPostcodeEmbed
+                            onComplete={(data) => {
+                              const fullAddress = data.roadAddress || data.jibunAddress;
+                              setDeliveryAddress(fullAddress);
+                              setShowPostcode(false);
+                            }}
+                            style={{ height: '400px', width: '100%' }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <label className={styles.fieldLabel}>
+                        상세 주소 <span className={styles.required}>*</span>
+                      </label>
                       <input
                         type="text"
-                        value={deliveryAddress}
-                        onChange={(e) => setDeliveryAddress(e.target.value)}
+                        value={deliveryAddressDetail}
+                        onChange={(e) => setDeliveryAddressDetail(e.target.value)}
                         className={styles.fieldInput}
-                        placeholder="서울시 강남구 테헤란로 123 ○○오피스텔 101호"
+                        placeholder="동/호수, 건물명 등 (예: 101동 1502호)"
                       />
                     </div>
                     <div>
