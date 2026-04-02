@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaStar, FaPhoneAlt, FaEnvelope, FaChevronDown, FaChevronUp, FaChevronRight } from 'react-icons/fa';
 import { MdSignalCellularAlt, MdTune, MdSwapVert, MdList } from 'react-icons/md';
+import { useTranslations } from 'next-intl';
 import styles from './PopularPlans.module.css';
 
 interface PlanDetail {
@@ -164,6 +165,20 @@ export default function PopularPlans() {
   const router = useRouter();
   const pathname = usePathname();
   const isPlansPage = pathname?.includes('/plans');
+  const t = useTranslations('plans');
+
+  const translateTag = (text: string) => {
+    if (text === '외국인 단독') return t('tagForeignerOnly');
+    if (text === '만 34세 이하') return t('tagUnder34');
+    if (text === '추천') return t('tagRecommended');
+    if (text === '데이터넉넉') return t('tagPlentyData');
+    if (text === '무제한급') return t('tagUnlimitedLevel');
+    return text;
+  };
+
+  const translatePromo = (name: string) => name.replace('[외국인 단독특가]', t('promoNamePrefix'));
+  const translateData = (spec: string) => spec.replace('월 ', t('monthPrefix'));
+  const translateVoice = (voice: string) => voice.replace('기본제공(무제한)', t('unlimited')).replace('기본제공', t('included'));
 
   const [showAll, setShowAll] = useState(isPlansPage || false);
   const [selectedPlan, setSelectedPlan] = useState<PlanBaseData | null>(null);
@@ -208,8 +223,8 @@ export default function PopularPlans() {
         {/* 섹션 헤더 */}
         <div className={styles.sectionHeader}>
           <div className={styles.titleArea}>
-            <h2 className={styles.sectionTitle}>추천 요금제를 만나보세요</h2>
-            <p className={styles.sectionDesc}>외국인 전용 최저가 요금제를 비교해보세요</p>
+            <h2 className={styles.sectionTitle}>{t('sectionTitle')}</h2>
+            <p className={styles.sectionDesc}>{t('sectionDesc')}</p>
           </div>
           
           <div className={styles.actionButtons}>
@@ -220,19 +235,19 @@ export default function PopularPlans() {
                 setShowAll(true);
               }}
             >
-              <MdList size={18} /> 모든 요금제 보기
+              <MdList size={18} /> {t('viewAllPlans')}
             </button>
             <button 
               className={styles.actionBtn} 
               onClick={() => setIsFilterModalOpen(true)}
             >
-              <MdTune size={18} /> 필터
+              <MdTune size={18} /> {t('filter')}
             </button>
             <button 
               className={`${styles.actionBtn} ${sortBy === 'recommended' ? styles.actionBtnActive : ''}`}
               onClick={() => setSortBy(prev => prev === 'recommended' ? 'none' : 'recommended')}
             >
-              <MdSwapVert size={18} /> 추천순
+              <MdSwapVert size={18} /> {t('sortByRecommended')}
             </button>
           </div>
         </div>
@@ -268,25 +283,25 @@ export default function PopularPlans() {
                   <div className={styles.tagGroup}>
                     {plan.tags.map((tag, i) => (
                       <span key={i} className={`${styles.tag} ${styles[`tag_${tag.variant}`]}`}>
-                        {tag.text}
+                        {translateTag(tag.text)}
                       </span>
                     ))}
                   </div>
                 </div>
 
                 {/* ROW 2: 프로모션 */}
-                <p className={styles.promoText}>{plan.promoName}</p>
+                <p className={styles.promoText}>{translatePromo(plan.promoName)}</p>
 
                 {/* ROW 3: 데이터 스펙 + 가격 */}
                 <div className={styles.specPriceRow}>
                   <div className={styles.specArea}>
-                    <h3 className={styles.dataSpec}>{plan.dataSpec}</h3>
+                    <h3 className={styles.dataSpec}>{translateData(plan.dataSpec)}</h3>
                     <div className={styles.featureIcons}>
                       <span className={styles.featureItem}>
-                        <FaPhoneAlt size={13} /> {plan.voiceDetail}
+                        <FaPhoneAlt size={13} /> {translateVoice(plan.voiceDetail)}
                       </span>
                       <span className={styles.featureItem}>
-                        <FaEnvelope size={13} /> {plan.msgDetail}
+                        <FaEnvelope size={13} /> {translateVoice(plan.msgDetail)}
                       </span>
                       <span className={styles.featureItem}>
                         <MdSignalCellularAlt size={16} /> {plan.networkDetail}
@@ -295,11 +310,12 @@ export default function PopularPlans() {
                   </div>
                   <div className={styles.priceArea}>
                     <div className={styles.priceMain}>
-                      <span className={styles.priceLabel}>월</span>
+                      <span className={styles.priceLabel}>{t('month')}</span>
                       <span className={styles.priceValue}>{plan.monthlyPrice}</span>
-                      <span className={styles.priceUnit}>원</span>
+                      <span className={styles.priceUnit}>{t('won')}</span>
                     </div>
-                    <p className={styles.priceNote}>{plan.returnPriceMsg}</p>
+                    {/* fallback or strip Korean specifics if translating dynamically or just hide if complex */}
+                    <p className={styles.priceNote}>{/* plan.returnPriceMsg */} {t('note1')}</p>
                   </div>
                 </div>
               </motion.div>
@@ -368,7 +384,7 @@ export default function PopularPlans() {
                   &times;
                 </button>
                 
-                <h2 className={styles.modalTitle}>{selectedPlan.promoName}</h2>
+                <h2 className={styles.modalTitle}>{translatePromo(selectedPlan.promoName)}</h2>
 
                 <div className={styles.modalSection}>
                   <h3 className={styles.modalSectionTitle}>기본 제공 (Basic Features)</h3>
@@ -376,56 +392,56 @@ export default function PopularPlans() {
                     <tbody>
                       <tr>
                         <th>데이터 (Data)</th>
-                        <td>{selectedPlan.dataSpec}</td>
+                        <td>{translateData(selectedPlan.dataSpec)}</td>
                       </tr>
                       <tr>
                         <th>통화 (Voice)</th>
-                        <td>{selectedPlan.voiceDetail}</td>
+                        <td>{translateVoice(selectedPlan.voiceDetail)}</td>
                       </tr>
                       <tr>
                         <th>문자 (SMS)</th>
-                        <td>{selectedPlan.msgDetail}</td>
+                        <td>{translateVoice(selectedPlan.msgDetail)}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
                 <div className={styles.modalSection}>
-                  <h3 className={styles.modalSectionTitle}>요금 상세 (Price Details / 12 months)</h3>
+                  <h3 className={styles.modalSectionTitle}>{t('priceDetails')}</h3>
                   <table className={styles.modalTable}>
                     <tbody>
                       <tr>
-                        <th>기본료 (Base Price)</th>
-                        <td>{selectedPlan.detail.basePrice}원</td>
+                        <th>{t('basePriceLabel')}</th>
+                        <td>{selectedPlan.detail.basePrice} {t('won')}</td>
                       </tr>
                       <tr className={styles.discountRow}>
-                        <th>프로모션 할인 (Promo)</th>
-                        <td>{selectedPlan.detail.promoDiscount}원</td>
+                        <th>{t('promoDiscountLabel')}</th>
+                        <td>{selectedPlan.detail.promoDiscount} {t('won')}</td>
                       </tr>
                       <tr className={styles.discountRow}>
-                        <th>선택약정 할인 (Contract)</th>
-                        <td>{selectedPlan.detail.contractDiscount}원</td>
+                        <th>{t('contractDiscountLabel')}</th>
+                        <td>{selectedPlan.detail.contractDiscount} {t('won')}</td>
                       </tr>
                       <tr className={styles.finalPriceRow}>
-                        <th>최종 월 요금 (Final)</th>
-                        <td>{selectedPlan.monthlyPrice}원</td>
+                        <th>{t('finalMonthlyPrice')}</th>
+                        <td>{selectedPlan.monthlyPrice} {t('won')}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
                 <div className={styles.modalSection}>
-                  <h3 className={styles.modalSectionTitle}>유의사항 (Important Notes)</h3>
+                  <h3 className={styles.modalSectionTitle}>{t('importantNotes')}</h3>
                   <ul style={{ fontSize: '13px', color: '#64748b', paddingLeft: '20px', margin: 0, lineHeight: 1.6 }}>
-                    <li>위 요금은 12개월간 특가 프로모션이 적용된 최종 금액입니다.</li>
-                    <li>13개월 차부터는 프로모션 할인이 종료되어 요금이 일부 변동될 수 있습니다.</li>
-                    <li>알뜰폰 및 단독 프로모션은 외국인등록증(ARC)을 소지한 외국인 한정으로 가입 가능합니다.</li>
+                    <li>{t('note1')}</li>
+                    <li>{t('note2')}</li>
+                    <li>{t('note3')}</li>
                   </ul>
                 </div>
 
                 <div className={styles.ctaWrap} style={{ marginTop: '32px' }}>
                   <a href={`/${pathname?.split('/')[1] || 'ko'}/apply?plan=${selectedPlan.id}`} className={styles.ctaButton} style={{ width: '100%', textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    이 요금제로 신청하기 (Apply) <FaChevronRight size={14} style={{ marginLeft: '6px' }} />
+                    {t('applyThisPlan')} <FaChevronRight size={14} style={{ marginLeft: '6px' }} />
                   </a>
                 </div>
 

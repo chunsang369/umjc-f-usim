@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
+  const t = useTranslations('hero');
   return (
     <section className="relative w-full h-screen min-h-[100dvh] overflow-hidden bg-neutral-900 flex items-center justify-center">
       {/* 
@@ -34,10 +36,10 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
-          Stop paying the{' '}
-          <span className="text-cyan-400 whitespace-nowrap">"foreigner tax."</span>
+          {t('title')}{' '}
+          <span className="text-cyan-400 whitespace-nowrap">{t('titleHighlight')}</span>
           <br />
-          No more hidden fees.
+          {t('subtitle').split('.')[0]}.
         </motion.h1>
         
         <motion.p 
@@ -46,9 +48,8 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
         >
-          No ARC? No Korean bank? No problem.<br className="hidden sm:block" />
-          <span className="sm:hidden"> </span>
-          Get connected instantly with just your passport.
+          {/* Note: Specific hardcoded phrase for visa/arc condition, can be extracted to general subtitle if needed. Using subtitle from JSON for now.*/}
+          {t('subtitle')}
         </motion.p>
 
         {/* 스크롤 인디케이터 */}

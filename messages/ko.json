@@ -40,7 +40,7 @@
     "button": "무료 상담받기"
   },
   "plans": {
-    "sectionTitle": "인기 요금제",
+    "sectionTitle": "추천 요금제를 만나보세요",
     "sectionSubtitle": "외국인을 위한 맞춤 요금제를 만나보세요",
     "monthly": "월",
     "data": "데이터",
@@ -51,7 +51,7 @@
     "applyNow": "신청하기",
     "viewDetails": "자세히 보기",
     "perMonth": "/월",
-    "unlimited": "무제한",
+    "unlimited": "기본제공(무제한)",
     "light": {
       "name": "Light",
       "positioning": "최저가 입문용"
@@ -64,7 +64,31 @@
       "name": "Premium",
       "positioning": "헤비 유저용"
     },
-    "savingsNote": "대형 통신사 대비 월 최대 ₩30,000 절약"
+    "savingsNote": "대형 통신사 대비 월 최대 ₩30,000 절약",
+    "sectionDesc": "외국인 전용 최저가 요금제를 비교해보세요",
+    "viewAllPlans": "모든 요금제 보기",
+    "filter": "필터",
+    "sortByRecommended": "추천순",
+    "month": "월",
+    "won": "원",
+    "tagForeignerOnly": "외국인 단독",
+    "tagUnder34": "만 34세 이하",
+    "tagRecommended": "추천",
+    "tagPlentyData": "데이터넉넉",
+    "tagUnlimitedLevel": "무제한급",
+    "included": "기본제공",
+    "promoNamePrefix": "[외국인 단독특가]",
+    "applyThisPlan": "이 요금제로 신청하기",
+    "priceDetails": "요금 상세 (Price Details / 12 months)",
+    "basePriceLabel": "기본료 (Base Price)",
+    "promoDiscountLabel": "프로모션 할인 (Promo)",
+    "contractDiscountLabel": "선택약정 할인 (Contract)",
+    "finalMonthlyPrice": "최종 월 요금 (Final)",
+    "importantNotes": "유의사항 (Important Notes)",
+    "note1": "위 요금은 12개월간 특가 프로모션이 적용된 최종 금액입니다.",
+    "note2": "13개월 차부터는 프로모션 할인이 종료되어 요금이 일부 변동될 수 있습니다.",
+    "note3": "알뜰폰 및 단독 프로모션은 외국인등록증(ARC)을 소지한 외국인 한정으로 가입 가능합니다.",
+    "monthPrefix": "월 "
   },
   "trust": {
     "sectionTitle": "안심하고 시작하세요",

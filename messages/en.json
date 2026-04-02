@@ -40,7 +40,7 @@
     "button": "Get Free Consultation"
   },
   "plans": {
-    "sectionTitle": "Popular Plans",
+    "sectionTitle": "Meet Our Recommended Plans",
     "sectionSubtitle": "Choose the perfect plan for your stay in Korea",
     "monthly": "mo",
     "data": "Data",
@@ -64,7 +64,31 @@
       "name": "Premium",
       "positioning": "For heavy users"
     },
-    "savingsNote": "Save up to ₩30,000/mo compared to major carriers"
+    "savingsNote": "Save up to ₩30,000/mo compared to major carriers",
+    "sectionDesc": "Compare the lowest priced plans exclusive for foreigners",
+    "viewAllPlans": "View all plans",
+    "filter": "Filter",
+    "sortByRecommended": "Recommended",
+    "month": "mo",
+    "won": "KRW",
+    "tagForeignerOnly": "Foreigner Only",
+    "tagUnder34": "Under 34",
+    "tagRecommended": "Recommended",
+    "tagPlentyData": "Rich Data",
+    "tagUnlimitedLevel": "Unlimited Level",
+    "included": "Included",
+    "promoNamePrefix": "[Exclusive Promo]",
+    "applyThisPlan": "Apply with this plan",
+    "priceDetails": "Price Details (12 months)",
+    "basePriceLabel": "Base Price",
+    "promoDiscountLabel": "Promo Discount",
+    "contractDiscountLabel": "Contract Discount",
+    "finalMonthlyPrice": "Final Monthly Price",
+    "importantNotes": "Important Notes",
+    "note1": "The above rate is the final price with a 12-month special promotion applied.",
+    "note2": "From the 13th month, the promotion discount ends and the rate may change slightly.",
+    "note3": "Budget phone and exclusive promotions are only available to foreigners holding an ARC.",
+    "monthPrefix": ""
   },
   "trust": {
     "sectionTitle": "Start with confidence",

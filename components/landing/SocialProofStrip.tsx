@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Globe, TrendingUp } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import styles from './SocialProofStrip.module.css';
 
 /* 날짜 기반 시드 랜덤 (1~30) — 매일 달라짐 */
@@ -61,6 +62,8 @@ export default function SocialProofStrip() {
   const counter2 = useCountUp(12500, 1600);
   const counter3 = useCountUp(30, 1000);
 
+  const t = useTranslations('socialProof');
+
   return (
     <section className={styles.strip}>
       <div className={styles.container}>
@@ -80,15 +83,15 @@ export default function SocialProofStrip() {
         >
           <div className={`${styles.item} ${styles.primary}`}>
             <TrendingUp size={18} />
-            <span>오늘 <strong>{counter1.count}</strong>명 가입</span>
+            <span>{t('todaySignups', { count: counter1.count })}</span>
           </div>
           <div className={`${styles.item} ${styles.secondary}`}>
             <Users size={18} />
-            <span>누적 <strong>{counter2.count.toLocaleString()}</strong>+ 가입자</span>
+            <span>{t('totalSubscribers', { count: counter2.count.toLocaleString() })}</span>
           </div>
           <div className={`${styles.item} ${styles.accent}`}>
             <Globe size={18} />
-            <span><strong>{counter3.count}</strong>+ 국가</span>
+            <span>{t('countries')}</span>
           </div>
         </motion.div>
 

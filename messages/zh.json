@@ -40,7 +40,7 @@
     "button": "获取免费咨询"
   },
   "plans": {
-    "sectionTitle": "热门套餐",
+    "sectionTitle": "查看推荐套餐",
     "sectionSubtitle": "为外国人量身定制的通信套餐",
     "monthly": "月",
     "data": "流量",
@@ -64,7 +64,31 @@
       "name": "Premium",
       "positioning": "重度使用型"
     },
-    "savingsNote": "比大型运营商每月最多节省₩30,000"
+    "savingsNote": "比大型运营商每月最多节省₩30,000",
+    "sectionDesc": "比较外国人专属的最低价套餐",
+    "viewAllPlans": "查看所有套餐",
+    "filter": "筛选",
+    "sortByRecommended": "推荐排序",
+    "month": "月",
+    "won": "韩元",
+    "tagForeignerOnly": "外国人专属",
+    "tagUnder34": "34岁以下",
+    "tagRecommended": "推荐",
+    "tagPlentyData": "大流量",
+    "tagUnlimitedLevel": "无限级别",
+    "included": "包含",
+    "promoNamePrefix": "[专属特惠]",
+    "applyThisPlan": "申请此套餐",
+    "priceDetails": "费用明细 (12个月)",
+    "basePriceLabel": "基本费用",
+    "promoDiscountLabel": "促销折扣",
+    "contractDiscountLabel": "合约折扣",
+    "finalMonthlyPrice": "最终月费",
+    "importantNotes": "注意事项",
+    "note1": "上述费用为适用12个月特别促销后的最终金额。",
+    "note2": "从第13个月起，促销折扣结束，费用可能会有变动。",
+    "note3": "实惠手机及专属促销仅限持有外国人登录证(ARC)的外国人申请。",
+    "monthPrefix": "每月 "
   },
   "trust": {
     "sectionTitle": "安心开始",

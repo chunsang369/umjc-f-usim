@@ -14,15 +14,15 @@
   },
   "hero": {
     "title": "Đăng ký điện thoại ở Hàn Quốc,",
-    "titleHighlight": "không lo về giá.",
-    "subtitle": "Giá minh bạch, không phát sinh. Đăng ký dễ dàng ngay hôm nay.",
+    "titleHighlight": "không còn khó khăn nữa.",
+    "subtitle": "Giá cố định. Không có phí ẩn. Bắt đầu với sự tự tin.",
     "ctaPrimary": "Tìm gói phù hợp",
     "ctaSecondary": "So sánh gói cước"
   },
   "socialProof": {
-    "todaySignups": "Hôm nay {count} người đăng ký",
-    "totalSubscribers": "{count}+ thuê bao",
-    "countries": "30+ quốc gia"
+    "todaySignups": "Hôm nay có {count} người đăng ký",
+    "totalSubscribers": "Hơn {count}+ người dùng",
+    "countries": "Hơn 30+ quốc gia"
   },
   "guarantee": {
     "title": "Khó khăn khi chọn USIM hay gói cước?",
@@ -40,7 +40,7 @@
     "button": "Nhận tư vấn miễn phí"
   },
   "plans": {
-    "sectionTitle": "Gói cước phổ biến",
+    "sectionTitle": "Xem các Gói Đề Xuất của chúng tôi",
     "sectionSubtitle": "Gói cước phù hợp cho người nước ngoài tại Hàn Quốc",
     "monthly": "tháng",
     "data": "Data",
@@ -64,7 +64,31 @@
       "name": "Premium",
       "positioning": "Cho người dùng nhiều"
     },
-    "savingsNote": "Tiết kiệm tới ₩30,000/tháng so với nhà mạng lớn"
+    "savingsNote": "Tiết kiệm tới ₩30,000/tháng so với nhà mạng lớn",
+    "sectionDesc": "So sánh các gói giá thấp nhất dành riêng cho người nước ngoài",
+    "viewAllPlans": "Xem tất cả các gói",
+    "filter": "Bộ lọc",
+    "sortByRecommended": "Đề xuất",
+    "month": "tháng",
+    "won": "Won",
+    "tagForeignerOnly": "Chỉ người N.Ngoài",
+    "tagUnder34": "Dưới 34 tuổi",
+    "tagRecommended": "Đề xuất",
+    "tagPlentyData": "Nhiều Data",
+    "tagUnlimitedLevel": "Mức Không giới hạn",
+    "included": "Đã bao gồm",
+    "promoNamePrefix": "[Khuyến mãi Tương K]",
+    "applyThisPlan": "Đăng ký gói này",
+    "priceDetails": "Chi tiết Giá (12 tháng)",
+    "basePriceLabel": "Giá Cơ bản",
+    "promoDiscountLabel": "Giảm giá Khuyến mãi",
+    "contractDiscountLabel": "Giảm giá Hợp đồng",
+    "finalMonthlyPrice": "Giá hàng tháng Cuối cùng",
+    "importantNotes": "Lưu ý Quan trọng",
+    "note1": "Mức giá trên là giá cuối cùng sau khi áp dụng khuyến mãi đặc biệt trong 12 tháng.",
+    "note2": "Từ tháng thứ 13, chiết khấu khuyến mãi sẽ kết thúc và mức giá có thể thay đổi nhẹ.",
+    "note3": "Điện thoại giá rẻ và các chương trình khuyến mãi độc quyền chỉ áp dụng cho người nước ngoài có thẻ ARC.",
+    "monthPrefix": "Mỗi tháng "
   },
   "trust": {
     "sectionTitle": "An tâm bắt đầu",
