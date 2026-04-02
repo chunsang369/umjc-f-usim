@@ -88,7 +88,14 @@
     "note1": "Mức giá trên là giá cuối cùng sau khi áp dụng khuyến mãi đặc biệt trong 12 tháng.",
     "note2": "Từ tháng thứ 13, chiết khấu khuyến mãi sẽ kết thúc và mức giá có thể thay đổi nhẹ.",
     "note3": "Điện thoại giá rẻ và các chương trình khuyến mãi độc quyền chỉ áp dụng cho người nước ngoài có thẻ ARC.",
-    "monthPrefix": "Mỗi tháng "
+    "monthPrefix": "Mỗi tháng ",
+    "filterModalTitle": "Hướng dẫn Tốc độ Data",
+    "filterModalSubtitle": "Xem các gói giá dựa trên tốc độ mong muốn của bạn",
+    "speed400Desc": "Tốt để nhắn tin, tải ảnh hơi chậm",
+    "speed1mbpsDesc": "Xem video 720P mượt mà",
+    "speed5mbpsDesc": "Sử dụng bình thường không có vấn đề",
+    "reset": "Đặt lại",
+    "viewResults": "Xem {count} kết quả"
   },
   "trust": {
     "sectionTitle": "An tâm bắt đầu",

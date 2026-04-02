@@ -88,7 +88,14 @@
     "note1": "위 요금은 12개월간 특가 프로모션이 적용된 최종 금액입니다.",
     "note2": "13개월 차부터는 프로모션 할인이 종료되어 요금이 일부 변동될 수 있습니다.",
     "note3": "알뜰폰 및 단독 프로모션은 외국인등록증(ARC)을 소지한 외국인 한정으로 가입 가능합니다.",
-    "monthPrefix": "월 "
+    "monthPrefix": "월 ",
+    "filterModalTitle": "데이터 속도 설명",
+    "filterModalSubtitle": "원하는 데이터 속도를 기준으로 요금제를 확인해보세요",
+    "speed400Desc": "메세지는 되지만 사진은 느려요",
+    "speed1mbpsDesc": "720P 화질 동영상을 무리없이 볼 수 있어요.",
+    "speed5mbpsDesc": "사용하는데 어떤 무리도 없어요",
+    "reset": "초기화",
+    "viewResults": "{count}개 결과 보기"
   },
   "trust": {
     "sectionTitle": "안심하고 시작하세요",

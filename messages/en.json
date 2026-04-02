@@ -88,7 +88,14 @@
     "note1": "The above rate is the final price with a 12-month special promotion applied.",
     "note2": "From the 13th month, the promotion discount ends and the rate may change slightly.",
     "note3": "Budget phone and exclusive promotions are only available to foreigners holding an ARC.",
-    "monthPrefix": ""
+    "monthPrefix": "",
+    "filterModalTitle": "Data Speed Guide",
+    "filterModalSubtitle": "Check plans based on your desired data speed",
+    "speed400Desc": "Good for messaging, slow for photos",
+    "speed1mbpsDesc": "Watch 720P videos without buffering",
+    "speed5mbpsDesc": "Seamless experience for regular use",
+    "reset": "Reset",
+    "viewResults": "View {count} results"
   },
   "trust": {
     "sectionTitle": "Start with confidence",

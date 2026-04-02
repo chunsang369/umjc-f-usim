@@ -88,7 +88,14 @@
     "note1": "上述费用为适用12个月特别促销后的最终金额。",
     "note2": "从第13个月起，促销折扣结束，费用可能会有变动。",
     "note3": "实惠手机及专属促销仅限持有外国人登录证(ARC)的外国人申请。",
-    "monthPrefix": "每月 "
+    "monthPrefix": "每月 ",
+    "filterModalTitle": "网速说明",
+    "filterModalSubtitle": "根据您想要的网速查看套餐",
+    "speed400Desc": "发消息没问题，看图较慢",
+    "speed1mbpsDesc": "可流畅观看 720P 高清视频",
+    "speed5mbpsDesc": "日常使用毫无问题",
+    "reset": "重置",
+    "viewResults": "查看 {count} 个结果"
   },
   "trust": {
     "sectionTitle": "安心开始",

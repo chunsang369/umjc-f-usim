@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MdClose } from 'react-icons/md';
 import { FiRefreshCw } from 'react-icons/fi';
+import { useTranslations } from 'next-intl';
 import styles from './DataFilterModal.module.css';
 
 interface DataFilterModalProps {
@@ -12,13 +13,8 @@ interface DataFilterModalProps {
   onApply: (selectedData: string | null) => void;
 }
 
-const presets = [
-  { id: '400kbps', icon: '💬', data: '400Kbps', desc: '메세지는 되지만 사진은 느려요' },
-  { id: '1mbps', icon: '🖼️', data: '1Mbps', desc: '720P 화질 동영상을 무리없이 볼 수 있어요.' },
-  { id: '5mbps', icon: '🚀', data: '5Mbps', desc: '사용하는데 어떤 무리도 없어요' },
-];
-
 export default function DataFilterModal({ isOpen, onClose, onApply }: DataFilterModalProps) {
+  const t = useTranslations('plans');
   const [selectedSpec, setSelectedSpec] = useState<string | null>(null);
 
   if (!isOpen) return null;
@@ -31,6 +27,12 @@ export default function DataFilterModal({ isOpen, onClose, onApply }: DataFilter
     onApply(selectedSpec);
     onClose();
   };
+
+  const presets = [
+    { id: '400kbps', icon: '💬', data: '400Kbps', desc: t('speed400Desc') },
+    { id: '1mbps', icon: '🖼️', data: '1Mbps', desc: t('speed1mbpsDesc') },
+    { id: '5mbps', icon: '🚀', data: '5Mbps', desc: t('speed5mbpsDesc') },
+  ];
 
   // We have 9 plans in total right now.
   const counts: Record<string, number> = {
@@ -52,8 +54,8 @@ export default function DataFilterModal({ isOpen, onClose, onApply }: DataFilter
       >
         <div className={styles.header}>
           <div className={styles.titleArea}>
-            <h2 className={styles.title}>데이터 속도 설명</h2>
-            <p className={styles.subtitle}>원하는 데이터 속도를 기준으로 요금제를 확인해보세요</p>
+            <h2 className={styles.title}>{t('filterModalTitle')}</h2>
+            <p className={styles.subtitle}>{t('filterModalSubtitle')}</p>
           </div>
           <button className={styles.closeButton} onClick={onClose}>
             <MdClose />
@@ -61,7 +63,6 @@ export default function DataFilterModal({ isOpen, onClose, onApply }: DataFilter
         </div>
 
         <div className={styles.scrollArea}>
-
           <div className={styles.presetsContainer}>
             {presets.map((preset) => {
               const isActive = selectedSpec === preset.id;
@@ -82,10 +83,10 @@ export default function DataFilterModal({ isOpen, onClose, onApply }: DataFilter
 
         <div className={styles.footer}>
           <button className={styles.resetButton} onClick={handleReset}>
-            <FiRefreshCw size={16} /> 초기화
+            <FiRefreshCw size={16} /> {t('reset')}
           </button>
           <button className={styles.submitButton} onClick={handleApply}>
-            {selectedSpec ? `${resultCount}개 결과 보기` : '9개 결과 보기'}
+            {t('viewResults', { count: resultCount })}
           </button>
         </div>
       </motion.div>
