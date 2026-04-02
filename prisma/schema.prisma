@@ -9,24 +9,52 @@ datasource db {
 
 model User {
   id            String   @id @default(cuid())
-  arcNumber     String?  // Foreigner Registration Number (ARC)
-  name          String
-  preferredLang String   @default("en")
+  name          String?
+  email         String?  @unique
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-
   applications  Application[]
 }
 
 model Application {
   id               String   @id @default(cuid())
-  userId           String
-  user             User     @relation(fields: [userId], references: [id])
-  planId           String   // 'light', 'standard', 'premium'
-  deliveryMethod   String   // 'esim', 'delivery', 'airport'
-  deliveryAddress  String?
-  paymentMethod    String?
+  userId           String?  // Optional for guest applications
+  user             User?    @relation(fields: [userId], references: [id])
   status           String   @default("pending") // pending, approved, completed, rejected
+  
+  // Step 1: 요금제 정보
+  planId           String
+  planName         String
+  monthlyPrice     String
+  
+  // Step 2: 개통 방식
+  verificationType String   // 'arc', 'passport'
+  
+  // Step 3: 신분증 정보
+  identityName     String   // 영문 성명
+  identityNumber   String   // ARC 번호 또는 여권 번호
+  visaType         String?  // 여권 개통 시 (D-2, D-4 등)
+  contactNumber    String?  // 연락 가능한 번호
+  
+  // 서류 (S3 등 업로드 후 파일 경로 저장 예정)
+  arcFrontFile     String?
+  mugshotFile      String?
+  passportFile     String?
+  entryProofFile   String?
+  
+  // Step 4: 수령 방법
+  deliveryMethod   String   // 'esim', 'physical'
+  
+  // eSIM 상세 정보
+  phoneModel       String?
+  imei1            String?
+  imei2            String?
+  eid              String?
+  
+  // 실물 택배 배송 정보
+  deliveryAddress  String?
+  deliveryPhone    String?
+  
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }

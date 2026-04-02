@@ -20,6 +20,7 @@ import {
   MessageSquare,
 } from 'lucide-react';
 import styles from './apply.module.css';
+import { submitApplication } from './actions';
 
 type VerificationType = 'arc' | 'passport' | null;
 type DeliveryType = 'esim' | 'physical' | null;
@@ -80,6 +81,7 @@ function ApplyPageContent() {
   const [eid, setEid] = useState('');
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [deliveryPhone, setDeliveryPhone] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const steps = ['요금제 확인', '개통 방식', '신분증 정보', '수령 방법', '접수 완료'];
 
@@ -108,6 +110,44 @@ function ApplyPageContent() {
   const handleNext = () => {
     if (currentStep < totalSteps) setCurrentStep(currentStep + 1);
   };
+
+  const handleSubmit = async () => {
+    if (!selectedPlan || !verificationType || !deliveryMethod) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitApplication({
+        planId: selectedPlan.id,
+        planName: selectedPlan.promoName,
+        monthlyPrice: selectedPlan.monthlyPrice,
+        verificationType: verificationType as 'arc' | 'passport',
+        identityName: verificationType === 'arc' ? arcName : passportName,
+        identityNumber: verificationType === 'arc' ? arcNumber : passportNumber,
+        visaType: verificationType === 'passport' ? visaType : undefined,
+        contactNumber: verificationType === 'passport' ? contactNumber : undefined,
+        deliveryMethod: deliveryMethod as 'esim' | 'physical',
+        phoneModel: deliveryMethod === 'esim' ? phoneModel : undefined,
+        imei1: deliveryMethod === 'esim' ? imei1 : undefined,
+        imei2: deliveryMethod === 'esim' ? imei2 : undefined,
+        eid: deliveryMethod === 'esim' ? eid : undefined,
+        deliveryAddress: deliveryMethod === 'physical' ? deliveryAddress : undefined,
+        deliveryPhone: deliveryMethod === 'physical' ? deliveryPhone : undefined,
+      });
+
+      if (result.success) {
+        setCurrentStep(5);
+      } else {
+        alert(result.error || '신청 처리 중 오류가 발생했습니다.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('서버와의 통신에 실패했습니다.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const handlePrev = () => {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
@@ -751,11 +791,11 @@ function ApplyPageContent() {
               {!(currentStep === 1 && !selectedPlan) && (
                 <button
                   type="button"
-                  onClick={handleNext}
-                  disabled={!canProceed()}
+                  onClick={currentStep === 4 ? handleSubmit : handleNext}
+                  disabled={!canProceed() || isSubmitting}
                   className={`${styles.btnNext} ${currentStep === 1 ? styles.btnNextFull : ''}`}
                 >
-                  {currentStep === 4 ? '동의 및 신청하기' : '다음 단계'}
+                  {isSubmitting ? '처리 중...' : currentStep === 4 ? '동의 및 신청하기' : '다음 단계'}
                 </button>
               )}
             </div>
