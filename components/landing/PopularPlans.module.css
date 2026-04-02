@@ -486,4 +486,22 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .actionButtons {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .actionBtn {
+    flex: 1;
+    justify-content: center;
+    white-space: nowrap;
+  }
 }
